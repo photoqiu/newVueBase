@@ -11,5 +11,6 @@ import { createApp } from 'vue'
 import router from './router'
 import { store } from './vuex/index';
 import App from './pages/App.vue'
+import './index.css'
 
 createApp(App).use(router).use(store).mount('#app');

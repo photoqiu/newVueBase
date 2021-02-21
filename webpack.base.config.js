@@ -69,18 +69,21 @@ module.exports = {
             {
                 test: /\.js?$/,
                 exclude: EXCLUDE,
-                include: [resolve('./src')],
+                include: resolve('./src'),
                 use: [
                     'babel-loader?cacheDirectory=true'
                 ]
             },
             {
                 test: /\.vue$/,
+                exclude: EXCLUDE,
+                include: resolve('./src'),
                 use: 'vue-loader'
             },
             {
                 test: /\.ts[x]?$/,
-                exclude: /node_modules/,
+                exclude: EXCLUDE,
+                include: resolve('./src'),
                 use: [
                     {
                         loader: "ts-loader",
@@ -228,6 +231,9 @@ module.exports = {
         alias: {
             fontAwesome: fontAwesomePath,
             vue: "@vue/runtime-dom",
+            "@component": './src/component',
+            "@pages": './src/pages',
+            "@assets": './src/assets', 
             localforage: localforagePath
         },
         extensions: ['.ts', '.tsx', '.js', '.css', '.vue', '.less', '.json', '.*'],
