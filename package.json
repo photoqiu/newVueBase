@@ -65,6 +65,7 @@
     "postcss": "^8.2.6",
     "postcss-focus": "^5.0.1",
     "postcss-loader": "^5.0.0",
+    "postcss-mixins": "^7.0.3",
     "postcss-preset-env": "^6.7.0",
     "postcss-px-to-viewport": "^1.1.1",
     "postcss-viewport-units": "^0.1.6",

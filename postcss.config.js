@@ -10,6 +10,7 @@
 module.exports = {
     plugins: {
         tailwindcss: {},
+        'postcss-mixins': {},
         'postcss-focus': {},
         'autoprefixer': {},
         'postcss-px-to-viewport': {

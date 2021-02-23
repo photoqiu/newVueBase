@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import "Header" from "../component/Header/index.vue";
+import Header from "../component/Header/index.vue";
 
 export default {
 
