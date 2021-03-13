@@ -41,6 +41,8 @@ const EXCLUDE = /node_modules|bower_components/;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require("glob");
 const chalk = require('chalk');
 
 function resolve(dir) {
@@ -106,6 +108,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            import: true,
                             sourceMap: true
                         }
                     },
@@ -132,6 +135,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            import: true,
                             sourceMap: true
                         }
                     },
@@ -167,6 +171,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            import: true,
                             sourceMap: true
                         }
                     },
@@ -177,6 +182,12 @@ module.exports = {
                                 config: path.resolve(__dirname, "./postcss.config.js"),
                             },
                             sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'fast-sass-loader',
+                        options: {
+                            implementation: require('node-sass')
                         }
                     }
                 ]
@@ -225,6 +236,18 @@ module.exports = {
                 use: 'val-loader'
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
     },
     resolve: {
         modules: ['node_modules'],
